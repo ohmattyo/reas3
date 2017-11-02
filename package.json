@@ -1,0 +1,19 @@
+{
+  "name": "reas3",
+  "version": "1.0.0",
+  "description": "Requirements Engineering Assignment 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohmattyo/reas3.git"
+  },
+  "author": "Matt Osbourne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ohmattyo/reas3/issues"
+  },
+  "homepage": "https://github.com/ohmattyo/reas3#readme"
+}
