@@ -1,0 +1,33 @@
+US1: User abilities - super-duper-user
+
+As a: system user
+I want to: be a super-duper-user
+So that: I have access to all system abilities, including the ability to view restricted content, and to assign roles
+
+
+US2: User role management
+
+As a: super-duper-user
+I want to: be able to designate roles to user accounts
+So that: others have appropriate permissions across the system
+
+
+US3: User abilities - super-user
+
+As a: system user
+I want to: be a super-user
+So that: I have access to all system abilities, except to view restricted content, and except to assign roles
+
+
+US4: Add authorized users to workgroup
+
+As a: resource librarian
+I want to: add users to a workgroup
+So that: other users may view or work with the workgroup
+
+
+US5: Object permissions for UCRATE users
+
+As a: super-user
+I want to: hide objects
+So that: other users cannot access objects without appropriate rights

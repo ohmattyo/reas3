@@ -1,0 +1,327 @@
+US1: User abilities - super-duper-user
+
+As a: system user
+I want to: be a super-duper-user
+So that: I have access to all system abilities, including the ability to view restricted content, and to assign roles
+
+
+US2: User role management
+
+As a: super-duper-user
+I want to: be able to designate roles to user accounts
+So that: others have appropriate permissions across the system
+
+
+US3: User abilities - super-user
+
+As a: system user
+I want to: be a super-user
+So that: I have access to all system abilities, except to view restricted content, and except to assign roles
+
+
+US4: Add authorized users to workgroup
+
+As a: resource librarian
+I want to: add users to a workgroup
+So that: other users may view or work with the workgroup
+
+
+US5: Object permissions for UCRATE users
+
+As a: super-user
+I want to: hide objects
+So that: other users cannot access objects without appropriate rights
+
+
+US6: Determine collection access rights
+
+As a: resource librarian
+I want to: set different levels of editing rights based on individual user(s)
+So that: students or other direct reports can work on some stages of the workflow but not every stage
+
+
+US7: Add embargo
+
+As a: curator
+I want to: embargo content
+So that: public access is restricted for a period of time
+
+
+US8: Set authorized staff access permissions for content when published
+
+As a: curator|resource librarian
+I want to: have access to the master files
+So that: I can respond to use requests with a high-resolution image
+
+
+US9: Set public access permissions for content when published
+
+As a: Resource librarian
+I want to: designate public access levels for workgroup content once it is published
+So that: only authorized users can access the content.
+
+
+US10: Mediated submission administration
+
+As a: resource librarian
+I want to: control which users can send submissions to me
+So that: I can limit who is able to use the system to send me files, and so that I can easily group related submissions together
+
+
+US11: Creating a workgroup
+
+As a: resource librarian
+I want to: create a workgroup
+So that: I may add and group related content for editing/processing
+
+
+US12: Derive a workgroup
+
+As a: resource librarian
+I want to: create a workgroup of files out of all of the files in a workgroup of works
+So that: I can gather and make changes to the files that belong to the works that I am working in my workgroup
+
+
+US13: Administrative notes
+
+As a: resource librarian
+I want to: add notes to my workgroup
+So that: I can keep simple notes on about a workgroup, to keep track of, for example, where the content came from
+
+
+US14: Basic workgroup metadata
+
+As a: resource librarian
+I want to: add a simple title and description to my workgroup
+So that: I can easily differentiate it from other workgroups
+
+
+US15: Adding existing objects to a workgroup
+
+As a: resource librarian
+I want to: add existing objects to a workgroup
+So that: I may apply batch processes
+
+
+US16: Set public access permissions for content when published
+
+As a: Resource librarian
+I want to: designate public access levels for workgroup content once it is published
+So that: only authorized users can access the content.
+
+
+US17: Add workgroup-level metadata to records
+
+As a: Metadata librarian
+I want to: add values to all records in workgroup
+So that: I can add common metadata
+
+
+US18: Adding new files to a workgroup
+
+As a: resource librarian
+I want to: add content to a workgroup
+So that: I may apply batch processes
+
+
+US19: Workgroup transaction logging
+
+As a: resource librarian
+I want: the system to automatically record transactional information about content in a workgroup
+So that: I don't have to keep track of this information by hand
+
+
+US20: Files administrative metadata
+
+As a: resource librarian
+I want: members of a workgroup to inherit rights metadata from the workgroup
+So that: I don't have to manually set this metadata
+
+
+US21: Generate checksum
+
+As a: resource librarian
+I want to: generate SHA-256 checksum values for all files in the workgroup
+So that: the system can perform fixity audits to verify file integrity
+
+
+US22: Perform characterization of files
+
+As a: resource librarian
+I want to: determine technical characteristics of all files in the workgroup
+So that: I know the base characteristics and can take further actions (e.g. normalization)
+
+
+US23: Deleting files
+
+As a: resource librarian
+I want to: delete unneeded files from the system
+So that: we aren't keeping track of files no longer intended for use
+
+
+US24: Automated file processing
+
+As a: resource librarian
+I want: the system to batch execute an action on files in the system
+So that: I don't have to make local copies of files to perform automate-able tasks
+
+
+US25: Using work templates, associate files with works
+
+As a: resource librarian
+I want to: create a template for potential files that will be associated with a work or other digital content
+So that: I can quickly process all files associated with a work, group, or collection
+
+
+US26: Batch Upload Records (CSV)
+
+As a: resource librarian
+I want to: batch ingest records from .csv files and automatically match to corresponding images
+So that: I can work outside of the UCRATE GUI
+
+
+US27: Generate Access Files
+
+As a: resource librarian
+I want to: the system to generate access files from preservation files
+So that: files submitted are web friendly and downloadable
+
+
+US28: Organize a collection
+
+As a: resource librarian
+I want to: create a collection of files to display to a user by topic (or other criteria) and to organize the files in a collection as needed
+So that:I can create groups of files and control how files are viewed when browsed by a user
+
+
+US29: Manage Collections by �Date of Submission� and by Description
+
+As a: resource librarian
+I want to: publish a collection and view the date the collection was uploaded along with the ability to add an internal description of the collection
+So that:I can easily track collections added
+
+
+US30: Creating sub-collections
+
+As a: resource librarian
+I want to: create a sub-collection that is a part of a larger parent collection
+So that: the relationship depicted is hierarchical
+
+
+US31: Retain file directory structure
+
+As a: resource librarian
+I want to: upload a directory that may contain sub-directories
+So that: my files are loaded in the system in a way that preserves the directory structure for workgroup processing
+
+
+US32: File replacement
+
+As a: resource librarian
+I want to: replace a bitstream on a file
+So that: I can replace an outdated version of a file with a newer version
+
+
+US33: Virus screening of deposited files
+
+As a: resource librarian
+I want to: screen my deposit for potential viruses
+So that: files are virus-free
+
+
+US34: Object auditing
+
+As a: resource librarian
+I want: the system to record a log of all change events to all objects
+So that: I can provide accountability regarding file integrity
+
+
+US35: Submission of files by general users
+
+As a: user with content (but not affiliated with the library)
+I want to: use the site to submit files to a librarian managing the repository
+So that: I can easily send stuff to that librarian
+
+
+US36: VRA Core
+
+As a: resource librarian
+I want to: use VRA Core for collections, work records, and images
+So that: I'm following best practices for description of cultural heritage resources
+
+
+US37: Getty Vocabularies
+
+As a: resource librarian
+I want to: incorporate the Getty Vocabularies into the UCRATE ingest form
+So that: students can select Getty terms from a list
+
+
+US38: Staff deposit notification
+
+As a: archives/resource librarian
+I want to: be notified when a UC staff member deposits files in the system
+So that: I know to start processing the deposited files
+
+
+US39: Submission of file(s) by UC staff
+
+As a: UC staff
+I want to: deposit files into the repository when instructed by the records retention schedule to send to Archives
+So that: I am compliant with UC records policies
+
+
+US40: Submission via email
+
+As a: user with content (but not affiliated with the library)
+I want to: use email to submit files to a librarian managing the repository
+So that: I can easily send stuff to that librarian
+
+
+US41: Describing works
+
+As a: metadata librarian
+I want to: enter values for the appropriate elements for each work
+So that: works can be indexed and documentation for works will exist
+
+
+US42: Verify/Check Records
+
+As a: resource librarian
+I want to: check students' metadata entries and sort which records haven't been verified
+So that: I can oversee and correct any mistakes
+
+
+US43: Automatic technical metadata
+
+As a: resource librarian
+I want: the system to automatically determine important technical metadata
+So that: I don't have to do any manual work to get this metadata into the system
+
+
+US44: Submission descriptive metadata
+
+As a: file submitter
+I want to: add some simple description to my submission
+So that: add information about a submission that might not be self-explanatory
+
+
+US45: Import EAD fields to describe works
+
+As a: resource librarian
+I want to: designate fields from my EAD file that will describe works (i.e. objects in the PCDM)
+So that: I can re-use data from my EAD file for work description
+
+
+US46: Stage a collection via imported EAD
+
+As a: resource librarian
+I want to: import an EAD file to stage a collection
+So that: the EAD file defines the sub-collections and/or works and provides a place for file arrangement
+
+
+US47: Submission administrative metadata
+
+As a: content librarian
+I want: any files submitted to be automatically tagged with metadata about the submission
+So that: important submission/accession information is automatically recorded
