@@ -19,7 +19,17 @@ const readFile = async function(fileName){
 
 const splitUserStories = async function(uS){
     return await new Promise(function(resolve){
-        resolve(uS.split('\n\n\n'));
+        if(uS.includes('\n\n\n')){
+            resolve(uS.split('\n\n\n'));
+        }
+        else if(uS.includes('\r\n\r\n\r\n')){
+            resolve(uS.split('\r\n\r\n\r\n'));
+        }
+        else{
+            console.log('String was unable to be separated!');
+            process.exit(1);
+        }
+
     });
 };
 
