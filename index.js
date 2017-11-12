@@ -1,5 +1,6 @@
 const fs = require('fs');
 const _ = require('lodash');
+const stopword = require('stopword');
 
 if(process.argv.length < 4){
     console.log('Usage: node index.js *filename* *keyword*');
@@ -46,10 +47,53 @@ const selectImportantUserStories = async function(userStoriesSplit, keyword){
     });
 };
 
+const keyUserStories = async function(uSs){
+    return await new Promise(function(resolve){
+        let userStories = [];
+        _.each(uSs, function(uS){
+            const indexOfColon = uS.indexOf(":");
+            let key = "";
+            // console.log(indexOfColon);
+            if(indexOfColon === 3){
+                key = uS.charAt(indexOfColon - 1);
+            }
+            else if(indexOfColon === 4){
+                key = uS.charAt(indexOfColon - 2) + uS.charAt(indexOfColon - 1);
+            }
+            let string = uS.substring(indexOfColon + 2);
+            
+            userStories.push({
+                id: key,
+                string: string
+            });
+        });
+        resolve(userStories);
+    });
+};
+
+const formatUserStories = async function(uSs){
+    return await new Promise(function(resolve){
+        _.each(uSs, function(uS){
+            uS.string = uS.string.replace(/:/g, '');
+            uS.string = uS.string.replace(/\r\n/g, ' ');
+            uS.string = uS.string.replace('  ', ' ');
+            uS.string = uS.string.toLowerCase();
+            uS.string = uS.string.split(' ');
+            uS.string = stopword.removeStopwords(uS.string);
+            uS.string = uS.string.filter(function(item, index, array){
+                return array.indexOf(item) == index;
+            });
+        });
+        resolve(uSs);
+    });
+};
+
 const execute = async function(){
     const userStoriesText = await readFile(process.argv[2]);
     const userStoriesSplit = await splitUserStories(userStoriesText);
     const importantUserStories = await selectImportantUserStories(userStoriesSplit, process.argv[3]);
+    const keyedUserStories = await keyUserStories(importantUserStories);
+    const formattedUserStories = await formatUserStories(keyedUserStories);
 };
 
 execute();
