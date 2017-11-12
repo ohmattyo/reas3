@@ -53,7 +53,6 @@ const keyUserStories = async function(uSs){
         _.each(uSs, function(uS){
             const indexOfColon = uS.indexOf(":");
             let key = "";
-            // console.log(indexOfColon);
             if(indexOfColon === 3){
                 key = uS.charAt(indexOfColon - 1);
             }
@@ -75,7 +74,12 @@ const formatUserStories = async function(uSs){
     return await new Promise(function(resolve){
         _.each(uSs, function(uS){
             uS.string = uS.string.replace(/:/g, '');
-            uS.string = uS.string.replace(/\r\n/g, ' ');
+            if(uS.string.includes('\n\n')){
+                uS.string = uS.string.replace(/\n/g, ' ');
+            }
+            else if(uS.string.includes('\r\n\r\n')){
+                uS.string = uS.string.replace(/\r\n/g, ' ');
+            }
             uS.string = uS.string.replace('  ', ' ');
             uS.string = uS.string.toLowerCase();
             uS.string = uS.string.split(' ');
