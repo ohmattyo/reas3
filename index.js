@@ -2,6 +2,8 @@ const fs = require('fs');
 const _ = require('lodash');
 const stopword = require('stopword');
 
+const threshold = 0.3;
+
 if(process.argv.length < 4) {
     console.log('Usage: node index.js *filename* *keyword*');
     process.exit(1);
@@ -86,13 +88,60 @@ const formatUserStories = async function(uSs) {
     });
 };
 
+const compareUserStories = async function(uSs) {
+    let similarUserStories = [];
+    _.each(uSs, function(uS1) {
+        _.each(uSs, function(uS2) {
+            if(uS1.id === uS2.id) {
+                return;
+            }
+            const differenceArray = _.xor(uS1.string, uS2.string);
+            const totalLength = uS1.string.length + uS2.string.length;
+            const differenceLength = differenceArray.length;
+            const overlapLength = totalLength - differenceLength;
+            const overlapPercentage = overlapLength / totalLength;
+            if(overlapPercentage >= threshold) {
+                // console.log(uS1.id + ',' + uS2.id);
+                // console.log(uS1.id + ',' + uS2.id + ' (' + overlapPercentage + ')');
+                similarUserStories.push({
+                    id1: uS1.id,
+                    id2: uS2.id
+                });
+            }
+        });
+    });
+    return similarUserStories;
+};
+
+const removeDuplicates = async function(uSs) {
+    let userStories = uSs;
+    let finalUserStories = [];
+    _.each(userStories, function(userStory) {
+        if(_.some(userStories, { id1: userStory.id2, id2: userStory.id1})) {
+            const index = _.findIndex(finalUserStories, { id1: userStory.id2, id2: userStory.id1});
+            if(index === -1) {
+                finalUserStories.push(userStory);
+            }
+        }
+    });
+    return finalUserStories;
+};
+
+const printSimilarUserStories = async function(uSs) {
+    _.each(uSs, function(uS) {
+        console.log(uS.id1 + ',' + uS.id2);
+    });
+};
+
 const execute = async function() {
     const userStoriesText = await readFile(process.argv[2]);
     const userStoriesSplit = await splitUserStories(userStoriesText);
     const importantUserStories = await selectImportantUserStories(userStoriesSplit, process.argv[3]);
     const keyedUserStories = await keyUserStories(importantUserStories);
     const formattedUserStories = await formatUserStories(keyedUserStories);
-    console.log(formattedUserStories);
+    const similarUserStories = await compareUserStories(formattedUserStories);
+    const trimmedUserStories = await removeDuplicates(similarUserStories);
+    printSimilarUserStories(trimmedUserStories);
 };
 
 execute();
