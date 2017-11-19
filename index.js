@@ -2,7 +2,7 @@ const fs = require('fs');
 const _ = require('lodash');
 const stopword = require('stopword');
 
-const threshold = 0.3;
+const threshold = 0.45;
 
 if(process.argv.length < 4) {
     console.log('Usage: node index.js *filename* *keyword*');
@@ -33,11 +33,30 @@ const splitUserStories = async function(uS) {
     });
 };
 
-const selectImportantUserStories = async function(userStoriesSplit, keyword) {
+const getKeywords = async function(keyword) {
+    return await new Promise(function(resolve) {
+        if(keyword === 'metadata') {
+            resolve(['metadata', 'rights', 'permissions', 'batch', 'technical', 'track', 'bitstream', 'screen', 'integrity', 'terms', 'EAD']);
+        }
+        else if(keyword === 'workgroup') {
+            resolve(['workgroup', 'workgroups', 'delete', 'batch', 'organize', 'manage ', 'bitstream', 'integrity', 'deposits', 'submit']);
+        }
+        resolve([keyword]);
+    });
+};
+
+const selectImportantUserStories = async function(userStoriesSplit, keywords) {
     return await new Promise(function(resolve) {
         let importantUserStories = [];
         _.each(userStoriesSplit, function(userStory) {
-            const isImportant = userStory.includes(keyword);
+            let isImportant = false;
+            _.each(keywords, function(keyword) {
+                isImportant = userStory.includes(keyword);
+                if(isImportant) {
+                    return false;
+                }
+                return true;
+            });
             if(isImportant) {
                 importantUserStories.push(userStory);
             }
@@ -136,7 +155,8 @@ const printSimilarUserStories = async function(uSs) {
 const execute = async function() {
     const userStoriesText = await readFile(process.argv[2]);
     const userStoriesSplit = await splitUserStories(userStoriesText);
-    const importantUserStories = await selectImportantUserStories(userStoriesSplit, process.argv[3]);
+    const keywords = await getKeywords(process.argv[3]);
+    const importantUserStories = await selectImportantUserStories(userStoriesSplit, keywords);
     const keyedUserStories = await keyUserStories(importantUserStories);
     const formattedUserStories = await formatUserStories(keyedUserStories);
     const similarUserStories = await compareUserStories(formattedUserStories);
