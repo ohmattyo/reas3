@@ -37,8 +37,7 @@ const getKeywords = async function(keyword) {
     return await new Promise(function(resolve) {
         if(keyword === 'metadata') {
             resolve(['metadata', 'rights', 'permissions', 'batch', 'technical', 'track', 'bitstream', 'screen', 'integrity', 'terms', 'EAD']);
-        }
-        else if(keyword === 'workgroup') {
+        } else if(keyword === 'workgroup') {
             resolve(['workgroup', 'workgroups', 'delete', 'batch', 'organize', 'manage ', 'bitstream', 'integrity', 'deposits', 'submit']);
         }
         resolve([keyword]);
