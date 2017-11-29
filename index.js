@@ -2,7 +2,7 @@ const fs = require('fs');
 const _ = require('lodash');
 const stopword = require('stopword');
 
-const threshold = 0.45;
+const threshold = 0.4;
 
 if(process.argv.length < 4) {
     console.log('Usage: node index.js *filename* *keyword*');
